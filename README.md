@@ -9,6 +9,7 @@ All resources and data sources have been tested with the following releases.
 | Platform        | Version |
 | --------------- | ------- |
 | Catalyst Center | 2.3.7.9 |
+| Catalyst Center | 2.3.7.10 |
 
 Documentation: <https://registry.terraform.io/providers/CiscoDevNet/catalystcenter/latest>
 
