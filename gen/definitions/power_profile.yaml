@@ -1,0 +1,76 @@
+---
+name: Power Profile
+rest_endpoint: /dna/intent/api/v1/wirelessSettings/powerProfiles
+get_rest_endpoint: /dna/intent/api/v1/wirelessSettings/powerProfiles
+delete_rest_endpoint: /dna/intent/api/v1/wirelessSettings/powerProfiles
+id_from_query_path: response.0
+id_from_query_path_attribute: id
+data_source_no_id: true
+put_id: true
+import_no_id: true
+mutex: true
+res_description: This resource manages AP Power Profiles. Power Profiles configure interface-level power rules (Ethernet speed, radio spatial streams, USB state) to control AP power consumption.
+doc_category: Wireless
+test_tags: [WIRELESS]
+attributes:
+  - model_name: profileName
+    type: String
+    query_param: true
+    mandatory: true
+    description: Name of the Power Profile
+    example: Low_Power_Profile
+    response_data_path: response.0.profileName
+  - model_name: description
+    type: String
+    description: Description of the Power Profile
+    example: Reduce power consumption on APs
+    response_data_path: response.0.description
+  - model_name: rules
+    type: List
+    description: Ordered list of rules for the Power Profile
+    response_data_path: response.0.rules
+    attributes:
+      - model_name: interfaceType
+        type: String
+        mandatory: true
+        enum_values: [ETHERNET, RADIO, USB]
+        description: Interface Type for the rule
+      - model_name: interfaceId
+        type: String
+        mandatory: true
+        enum_values:
+          [
+            GIGABITETHERNET0,
+            GIGABITETHERNET1,
+            LAN1,
+            LAN2,
+            LAN3,
+            6GHZ,
+            5GHZ,
+            SECONDARY_5GHZ,
+            2_4GHZ,
+            USB0,
+          ]
+        description: Interface ID for the rule
+      - model_name: parameterType
+        type: String
+        mandatory: true
+        enum_values: [SPEED, SPATIALSTREAM, STATE]
+        description: Parameter Type for the rule
+      - model_name: parameterValue
+        type: String
+        mandatory: true
+        enum_values:
+          [
+            5000MBPS,
+            2500MBPS,
+            1000MBPS,
+            100MBPS,
+            EIGHT_BY_EIGHT,
+            FOUR_BY_FOUR,
+            THREE_BY_THREE,
+            TWO_BY_TWO,
+            ONE_BY_ONE,
+            DISABLE,
+          ]
+        description: Parameter Value for the rule
