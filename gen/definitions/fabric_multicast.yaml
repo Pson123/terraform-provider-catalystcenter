@@ -1,0 +1,47 @@
+---
+name: Fabric Multicast
+rest_endpoint: /dna/intent/api/v1/sda/multicast
+res_description: Manages Fabric Multicast configuration at a fabric site level. This resource configures the multicast replication mode (headend replication or native multicast) for a fabric site.
+id_from_query_path: response.0
+id_from_query_path_attribute: fabricId
+import_no_id: true
+data_source_no_id: true
+put_no_id: true
+put_create: true
+no_delete: true
+skip_minimum_test: true
+device_unreachability_warning: true
+mutex: true
+doc_category: SDA
+attributes:
+  - model_name: fabricId
+    requires_replace: true
+    data_path: '0'
+    query_param: true
+    response_data_path: response.0.fabricId
+    mandatory: true
+    description: ID of the fabric site where multicast is configured
+    type: String
+    example: 5e6f7b3a-2b0b-4a7d-8b1c-0d4b1cd5e1b1
+    test_value: catalystcenter_fabric_site.test.id
+  - model_name: replicationMode
+    data_path: '0'
+    response_data_path: response.0.replicationMode
+    mandatory: true
+    type: String
+    enum_values: [NATIVE_MULTICAST, HEADEND_REPLICATION]
+    description: Replication Mode deployed in the fabric site
+    example: HEADEND_REPLICATION
+test_prerequisites: |
+  data "catalystcenter_site" "test" {
+    name_hierarchy = "Global"
+  }
+  resource "catalystcenter_area" "test" {
+    name      = "Area1"
+    parent_id = data.catalystcenter_site.test.id
+  }
+  resource "catalystcenter_fabric_site" "test" {
+    site_id                     = catalystcenter_area.test.id
+    pub_sub_enabled             = false
+    authentication_profile_name = "No Authentication"
+  }
