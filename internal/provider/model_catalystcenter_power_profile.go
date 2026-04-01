@@ -58,10 +58,6 @@ func (data PowerProfile) getPath() string {
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getPathDelete
 
-func (data PowerProfile) getPathDelete() string {
-	return "/dna/intent/api/v1/wirelessSettings/powerProfiles"
-}
-
 // End of section. //template:end getPathDelete
 
 // Section below is generated&owned by "gen/generator.go". //template:begin getPathGet

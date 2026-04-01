@@ -2,7 +2,6 @@
 name: Power Profile
 rest_endpoint: /dna/intent/api/v1/wirelessSettings/powerProfiles
 get_rest_endpoint: /dna/intent/api/v1/wirelessSettings/powerProfiles
-delete_rest_endpoint: /dna/intent/api/v1/wirelessSettings/powerProfiles
 id_from_query_path: response.0
 id_from_query_path_attribute: id
 data_source_no_id: true
