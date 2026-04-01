@@ -9,6 +9,7 @@ description: |-
 
 ## 0.5.7 (unreleased)
 
+- Add `catalystcenter_power_profile` resource and data source for managing AP power profiles
 - Add `clean_up_config` attribute to `catalystcenter_provision_device` and `catalystcenter_provision_devices` resources
 - Fix `catalystcenter_network_profile` and `catalystcenter_network_profile_for_sites_assignments` resources failing when a large number of sites are assigned to a network profile
 
