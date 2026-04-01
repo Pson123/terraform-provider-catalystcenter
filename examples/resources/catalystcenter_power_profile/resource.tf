@@ -3,10 +3,10 @@ resource "catalystcenter_power_profile" "example" {
   description  = "Reduce power consumption on APs"
   rules = [
     {
-      interface_type  = ""
-      interface_id    = ""
-      parameter_type  = ""
-      parameter_value = ""
+      interface_type  = "RADIO"
+      interface_id    = "6GHZ"
+      parameter_type  = "STATE"
+      parameter_value = "DISABLE"
     }
   ]
 }

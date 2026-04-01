@@ -27,6 +27,7 @@ attributes:
     response_data_path: response.0.description
   - model_name: rules
     type: List
+    mandatory: true
     description: Ordered list of rules for the Power Profile
     response_data_path: response.0.rules
     attributes:
@@ -35,6 +36,7 @@ attributes:
         mandatory: true
         enum_values: [ETHERNET, RADIO, USB]
         description: Interface Type for the rule
+        example: RADIO
       - model_name: interfaceId
         type: String
         mandatory: true
@@ -52,11 +54,13 @@ attributes:
             USB0,
           ]
         description: Interface ID for the rule
+        example: 6GHZ
       - model_name: parameterType
         type: String
         mandatory: true
         enum_values: [SPEED, SPATIALSTREAM, STATE]
         description: Parameter Type for the rule
+        example: STATE
       - model_name: parameterValue
         type: String
         mandatory: true
@@ -74,3 +78,4 @@ attributes:
             DISABLE,
           ]
         description: Parameter Value for the rule
+        example: DISABLE

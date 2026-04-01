@@ -35,10 +35,10 @@ func TestAccCcPowerProfile(t *testing.T) {
 	var checks []resource.TestCheckFunc
 	checks = append(checks, resource.TestCheckResourceAttr("catalystcenter_power_profile.test", "profile_name", "Low_Power_Profile"))
 	checks = append(checks, resource.TestCheckResourceAttr("catalystcenter_power_profile.test", "description", "Reduce power consumption on APs"))
-	checks = append(checks, resource.TestCheckResourceAttr("catalystcenter_power_profile.test", "rules.0.interface_type", ""))
-	checks = append(checks, resource.TestCheckResourceAttr("catalystcenter_power_profile.test", "rules.0.interface_id", ""))
-	checks = append(checks, resource.TestCheckResourceAttr("catalystcenter_power_profile.test", "rules.0.parameter_type", ""))
-	checks = append(checks, resource.TestCheckResourceAttr("catalystcenter_power_profile.test", "rules.0.parameter_value", ""))
+	checks = append(checks, resource.TestCheckResourceAttr("catalystcenter_power_profile.test", "rules.0.interface_type", "RADIO"))
+	checks = append(checks, resource.TestCheckResourceAttr("catalystcenter_power_profile.test", "rules.0.interface_id", "6GHZ"))
+	checks = append(checks, resource.TestCheckResourceAttr("catalystcenter_power_profile.test", "rules.0.parameter_type", "STATE"))
+	checks = append(checks, resource.TestCheckResourceAttr("catalystcenter_power_profile.test", "rules.0.parameter_value", "DISABLE"))
 
 	var steps []resource.TestStep
 	if os.Getenv("SKIP_MINIMUM_TEST") == "" {
@@ -67,6 +67,12 @@ func TestAccCcPowerProfile(t *testing.T) {
 func testAccCcPowerProfileConfig_minimum() string {
 	config := `resource "catalystcenter_power_profile" "test" {` + "\n"
 	config += `	profile_name = "Low_Power_Profile"` + "\n"
+	config += `	rules = [{` + "\n"
+	config += `	  interface_type = "RADIO"` + "\n"
+	config += `	  interface_id = "6GHZ"` + "\n"
+	config += `	  parameter_type = "STATE"` + "\n"
+	config += `	  parameter_value = "DISABLE"` + "\n"
+	config += `	}]` + "\n"
 	config += `}` + "\n"
 	return config
 }
@@ -79,10 +85,10 @@ func testAccCcPowerProfileConfig_all() string {
 	config += `	profile_name = "Low_Power_Profile"` + "\n"
 	config += `	description = "Reduce power consumption on APs"` + "\n"
 	config += `	rules = [{` + "\n"
-	config += `	  interface_type = ""` + "\n"
-	config += `	  interface_id = ""` + "\n"
-	config += `	  parameter_type = ""` + "\n"
-	config += `	  parameter_value = ""` + "\n"
+	config += `	  interface_type = "RADIO"` + "\n"
+	config += `	  interface_id = "6GHZ"` + "\n"
+	config += `	  parameter_type = "STATE"` + "\n"
+	config += `	  parameter_value = "DISABLE"` + "\n"
 	config += `	}]` + "\n"
 	config += `}` + "\n"
 	return config

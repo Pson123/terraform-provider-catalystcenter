@@ -82,7 +82,7 @@ func (r *PowerProfileResource) Schema(ctx context.Context, req resource.SchemaRe
 			},
 			"rules": schema.ListNestedAttribute{
 				MarkdownDescription: helpers.NewAttributeDescription("Ordered list of rules for the Power Profile").String,
-				Optional:            true,
+				Required:            true,
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"interface_type": schema.StringAttribute{

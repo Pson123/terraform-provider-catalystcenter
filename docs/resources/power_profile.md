@@ -18,10 +18,10 @@ resource "catalystcenter_power_profile" "example" {
   description  = "Reduce power consumption on APs"
   rules = [
     {
-      interface_type  = ""
-      interface_id    = ""
-      parameter_type  = ""
-      parameter_value = ""
+      interface_type  = "RADIO"
+      interface_id    = "6GHZ"
+      parameter_type  = "STATE"
+      parameter_value = "DISABLE"
     }
   ]
 }
@@ -33,11 +33,11 @@ resource "catalystcenter_power_profile" "example" {
 ### Required
 
 - `profile_name` (String) Name of the Power Profile
+- `rules` (Attributes List) Ordered list of rules for the Power Profile (see [below for nested schema](#nestedatt--rules))
 
 ### Optional
 
 - `description` (String) Description of the Power Profile
-- `rules` (Attributes List) Ordered list of rules for the Power Profile (see [below for nested schema](#nestedatt--rules))
 
 ### Read-Only
 
