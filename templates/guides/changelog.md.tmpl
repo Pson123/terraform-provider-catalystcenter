@@ -10,6 +10,7 @@ description: |-
 ## 0.5.8 (unreleased)
 
 - Add `catalystcenter_anchor_group` resource and data source for managing wireless anchor groups with support for managed and external mobility anchors
+- Add `anchor_group_name` attribute to `catalystcenter_wireless_profile` SSID details for linking SSIDs to anchor groups
 - Add `catalystcenter_device_replacement` resource for marking devices for RMA (Return Material Authorization) replacement
 - Add `catalystcenter_device_replacement_workflow` resource for triggering the device replacement workflow on marked devices
 

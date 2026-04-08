@@ -61,6 +61,7 @@ Required:
 
 Optional:
 
+- `anchor_group_name` (String) Anchor Group Name. The anchor group must already exist before being referenced here.
 - `dot11be_profile_id` (String) 802.11be Profile Id. Applicable to IOS controllers with version 17.15 and higher. 802.11be Profiles if passed, should be same across all SSIDs in network profile being configured
 - `enable_fabric` (Boolean) True if fabric is enabled, else False. Flex and fabric cannot be enabled simultaneously and a profile can only contain either flex SSIDs or fabric SSIDs and not both at the same time
 - `enable_flex_connect` (Boolean) True if flex connect is enabled, else False. Flex and fabric cannot be enabled simultaneously and a profile can only contain either flex SSIDs or fabric SSIDs and not both at the same time
