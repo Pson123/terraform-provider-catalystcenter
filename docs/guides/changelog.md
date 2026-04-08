@@ -7,6 +7,12 @@ description: |-
 
 # Changelog
 
+## 0.5.8 (unreleased)
+
+- Add `catalystcenter_anchor_group` resource and data source for managing wireless anchor groups with support for managed and external mobility anchors
+- Add `catalystcenter_device_replacement` resource for marking devices for RMA (Return Material Authorization) replacement
+- Add `catalystcenter_device_replacement_workflow` resource for triggering the device replacement workflow on marked devices
+
 ## 0.5.7
 
 - Add `catalystcenter_power_profile` resource and data source for managing AP power profiles

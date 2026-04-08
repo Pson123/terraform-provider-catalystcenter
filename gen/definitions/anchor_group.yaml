@@ -1,0 +1,65 @@
+---
+name: Anchor Group
+rest_endpoint: /dna/intent/api/v1/wirelessSettings/anchorGroups
+get_from_all: true
+id_from_query_path: response
+id_from_query_path_attribute: id
+put_id: true
+import_no_id: true
+mutex: true
+skip_minimum_test: true
+res_description: This resource manages wireless Anchor Groups. Anchor Groups define mobility anchor WLCs for guest tunneling, supporting up to 3 anchors with configurable priority.
+doc_category: Wireless
+test_tags: [WIRELESS]
+attributes:
+  - model_name: anchorGroupName
+    type: String
+    match_id: true
+    mandatory: true
+    string_max_length: 32
+    description: Anchor Group Name. Max length is 32 characters.
+    example: AG1
+  - model_name: mobilityAnchors
+    type: List
+    mandatory: true
+    description: Mobility Anchor details. Maximum 3 anchors are allowed.
+    attributes:
+      - model_name: deviceName
+        type: String
+        mandatory: true
+        description: Peer device host name.
+        example: WLC-ANCHOR
+      - model_name: ipAddress
+        type: String
+        mandatory: true
+        description: Mobility public IP address of the anchor WLC.
+        example: 10.0.0.1
+      - model_name: anchorPriority
+        type: String
+        mandatory: true
+        enum_values: [PRIMARY, SECONDARY, TERTIARY]
+        description: "Anchor priority. Only one priority value is allowed per anchor WLC."
+        example: PRIMARY
+      - model_name: managedAnchorWlc
+        type: Bool
+        mandatory: true
+        description: Whether the anchor WLC is managed by the Network Controller.
+        example: false
+      - model_name: peerDeviceType
+        type: String
+        enum_values: [IOS-XE, AIREOS]
+        description: Indicates whether the peer device belongs to AireOS or IOS-XE family. Required for external (unmanaged) anchors.
+        example: IOS-XE
+      - model_name: macAddress
+        type: String
+        description: "Peer device mobility MAC address. Allowed formats: 0a0b.0c01.0211, 0a0b0c010211, 0a:0b:0c:01:02:11. Required for external (unmanaged) anchors."
+        example: "aa:bb:cc:00:00:01"
+      - model_name: mobilityGroupName
+        type: String
+        string_max_length: 31
+        description: Peer device mobility group name. Must be alphanumeric, maximum 31 characters. Required for external (unmanaged) anchors.
+        example: default
+      - model_name: privateIp
+        type: String
+        description: Private management IP address of the anchor WLC.
+        exclude_test: true

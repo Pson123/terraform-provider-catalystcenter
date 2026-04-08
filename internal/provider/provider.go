@@ -298,6 +298,7 @@ func (p *CcProvider) Configure(ctx context.Context, req provider.ConfigureReques
 func (p *CcProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
 		NewAAASettingsResource,
+		NewAnchorGroupResource,
 		NewAnycastGatewayResource,
 		NewAnycastGatewaysResource,
 		NewAPProfileResource,
@@ -393,6 +394,7 @@ func (p *CcProvider) DataSources(ctx context.Context) []func() datasource.DataSo
 		NewIPPoolsDataSource,          // manually maintained
 		NewTemplateVersionsDataSource, // manually maintained
 		NewAAASettingsDataSource,
+		NewAnchorGroupDataSource,
 		NewAnycastGatewayDataSource,
 		NewAnycastGatewaysDataSource,
 		NewAPProfileDataSource,
