@@ -46,6 +46,7 @@ type WirelessProfileSsidDetails struct {
 	InterfaceName     types.String `tfsdk:"interface_name"`
 	WlanProfileName   types.String `tfsdk:"wlan_profile_name"`
 	Dot11beProfileId  types.String `tfsdk:"dot11be_profile_id"`
+	AnchorGroupName   types.String `tfsdk:"anchor_group_name"`
 }
 
 type WirelessProfileApZones struct {
@@ -102,6 +103,9 @@ func (data WirelessProfile) toBody(ctx context.Context, state WirelessProfile) s
 			}
 			if !item.Dot11beProfileId.IsNull() {
 				itemBody, _ = sjson.Set(itemBody, "dot11beProfileId", item.Dot11beProfileId.ValueString())
+			}
+			if !item.AnchorGroupName.IsNull() {
+				itemBody, _ = sjson.Set(itemBody, "anchorGroupName", item.AnchorGroupName.ValueString())
 			}
 			body, _ = sjson.SetRaw(body, "ssidDetails.-1", itemBody)
 		}
@@ -185,6 +189,11 @@ func (data *WirelessProfile) fromBody(ctx context.Context, res gjson.Result) {
 				item.Dot11beProfileId = types.StringValue(cValue.String())
 			} else {
 				item.Dot11beProfileId = types.StringNull()
+			}
+			if cValue := v.Get("anchorGroupName"); cValue.Exists() {
+				item.AnchorGroupName = types.StringValue(cValue.String())
+			} else {
+				item.AnchorGroupName = types.StringNull()
 			}
 			data.SsidDetails = append(data.SsidDetails, item)
 			return true
@@ -286,6 +295,11 @@ func (data *WirelessProfile) updateFromBody(ctx context.Context, res gjson.Resul
 			data.SsidDetails[i].Dot11beProfileId = types.StringValue(value.String())
 		} else {
 			data.SsidDetails[i].Dot11beProfileId = types.StringNull()
+		}
+		if value := r.Get("anchorGroupName"); value.Exists() && !data.SsidDetails[i].AnchorGroupName.IsNull() {
+			data.SsidDetails[i].AnchorGroupName = types.StringValue(value.String())
+		} else {
+			data.SsidDetails[i].AnchorGroupName = types.StringNull()
 		}
 	}
 	if value := res.Get("response.0.additionalInterfaces"); value.Exists() && !data.AdditionalInterfaces.IsNull() {

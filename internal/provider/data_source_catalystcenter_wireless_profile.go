@@ -99,6 +99,10 @@ func (d *WirelessProfileDataSource) Schema(ctx context.Context, req datasource.S
 							MarkdownDescription: "802.11be Profile Id. Applicable to IOS controllers with version 17.15 and higher. 802.11be Profiles if passed, should be same across all SSIDs in network profile being configured",
 							Computed:            true,
 						},
+						"anchor_group_name": schema.StringAttribute{
+							MarkdownDescription: "Anchor Group Name. The anchor group must already exist before being referenced here.",
+							Computed:            true,
+						},
 					},
 				},
 			},
