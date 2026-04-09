@@ -9,6 +9,8 @@ description: |-
 
 ## 0.5.8 (unreleased)
 
+- Fix issue with deploying `catalystcenter_fabric_multicast_virtual_networks` and `catalystcenter_fabric_multicast_virtual_network` resources
+- Fix issue with `catalystcenter_fabric_port_assignments` resource, [link](https://github.com/CiscoDevNet/terraform-provider-catalystcenter/issues/385)
 - Add `catalystcenter_anchor_group` resource and data source for managing wireless anchor groups with support for managed and external mobility anchors
 - Add `anchor_group_name` attribute to `catalystcenter_wireless_profile` SSID details for linking SSIDs to anchor groups
 - Add `catalystcenter_device_replacement` resource for marking devices for RMA (Return Material Authorization) replacement
