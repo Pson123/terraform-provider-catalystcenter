@@ -1,5 +1,6 @@
 ## 0.5.8 (unreleased)
 
+- Add read cache to `catalystcenter_provision_device` resource to improve performance with large state files
 - Fix issue with deploying `catalystcenter_fabric_multicast_virtual_networks` and `catalystcenter_fabric_multicast_virtual_network` resources
 - Fix issue with `catalystcenter_fabric_port_assignments` resource, [link](https://github.com/CiscoDevNet/terraform-provider-catalystcenter/issues/385)
 - Add `catalystcenter_anchor_group` resource and data source for managing wireless anchor groups with support for managed and external mobility anchors
