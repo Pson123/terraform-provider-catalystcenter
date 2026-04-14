@@ -42,8 +42,8 @@ git push
 
 ## Current Version
 
-**Provider Version**: v0.5.7
-**Generated**: 2026-04-02
+**Provider Version**: v0.5.8
+**Generated**: 2026-04-14
 **Syft Version**: v1.42.3
 
 ## Usage
