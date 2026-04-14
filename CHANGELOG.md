@@ -1,4 +1,4 @@
-## 0.5.8 (unreleased)
+## 0.5.8
 
 - Add read cache to `catalystcenter_provision_device` resource to improve performance with large state files
 - Fix issue with deploying `catalystcenter_fabric_multicast_virtual_networks` and `catalystcenter_fabric_multicast_virtual_network` resources
