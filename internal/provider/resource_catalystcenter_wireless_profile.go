@@ -96,7 +96,7 @@ func (r *WirelessProfileResource) Schema(ctx context.Context, req resource.Schem
 							Optional:            true,
 						},
 						"interface_name": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Interface Name").String,
+							MarkdownDescription: helpers.NewAttributeDescription("Interface Name. Mutually exclusive with vlan_group_name. Not applicable when fabric is enabled.").String,
 							Optional:            true,
 						},
 						"wlan_profile_name": schema.StringAttribute{
@@ -108,7 +108,11 @@ func (r *WirelessProfileResource) Schema(ctx context.Context, req resource.Schem
 							Optional:            true,
 						},
 						"anchor_group_name": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Anchor Group Name. The anchor group must already exist before being referenced here.").String,
+							MarkdownDescription: helpers.NewAttributeDescription("Anchor Group Name.").String,
+							Optional:            true,
+						},
+						"vlan_group_name": schema.StringAttribute{
+							MarkdownDescription: helpers.NewAttributeDescription("VLAN Group Name. References a pre-configured VLAN Group on the WLC for client VLAN load-balancing. Mutually exclusive with interface_name. Not applicable when fabric is enabled.").String,
 							Optional:            true,
 						},
 					},
