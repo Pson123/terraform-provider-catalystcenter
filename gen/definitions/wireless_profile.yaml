@@ -60,7 +60,7 @@ attributes:
         exclude_test: true
       - model_name: anchorGroupName
         type: String
-        description: Anchor Group Name.
+        description: Anchor Group Name
         exclude_test: true
       - model_name: vlanGroupName
         type: String

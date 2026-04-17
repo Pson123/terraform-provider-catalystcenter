@@ -108,7 +108,7 @@ func (r *WirelessProfileResource) Schema(ctx context.Context, req resource.Schem
 							Optional:            true,
 						},
 						"anchor_group_name": schema.StringAttribute{
-							MarkdownDescription: helpers.NewAttributeDescription("Anchor Group Name.").String,
+							MarkdownDescription: helpers.NewAttributeDescription("Anchor Group Name").String,
 							Optional:            true,
 						},
 						"vlan_group_name": schema.StringAttribute{

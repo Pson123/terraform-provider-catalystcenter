@@ -9,6 +9,7 @@ description: |-
 
 ## 0.5.9 (unreleased)
 
+- Add read cache to `catalystcenter_fabric_device` resource to improve performance with large state files
 - Add `catalystcenter_fabric_multicast_replication_mode` resource and data source to manage fabric multicast replication mode
 - Add `vlan_group_name` attribute to `catalystcenter_wireless_profile` SSID details for referencing pre-configured VLAN Groups on WLCs (mutually exclusive with `interface_name`)
 

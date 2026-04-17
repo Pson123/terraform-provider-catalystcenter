@@ -100,7 +100,7 @@ func (d *WirelessProfileDataSource) Schema(ctx context.Context, req datasource.S
 							Computed:            true,
 						},
 						"anchor_group_name": schema.StringAttribute{
-							MarkdownDescription: "Anchor Group Name.",
+							MarkdownDescription: "Anchor Group Name",
 							Computed:            true,
 						},
 						"vlan_group_name": schema.StringAttribute{
