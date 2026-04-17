@@ -46,7 +46,7 @@ attributes:
         exclude_test: true
       - model_name: interfaceName
         type: String
-        description: Interface Name
+        description: Interface Name. Mutually exclusive with vlan_group_name. Not applicable when fabric is enabled.
         exclude_test: true
         example: management
       - model_name: wlanProfileName
@@ -60,7 +60,11 @@ attributes:
         exclude_test: true
       - model_name: anchorGroupName
         type: String
-        description: Anchor Group Name. The anchor group must already exist before being referenced here.
+        description: Anchor Group Name.
+        exclude_test: true
+      - model_name: vlanGroupName
+        type: String
+        description: VLAN Group Name. References a pre-configured VLAN Group on the WLC for client VLAN load-balancing. Mutually exclusive with interface_name. Not applicable when fabric is enabled.
         exclude_test: true
   - model_name: additionalInterfaces
     type: Set

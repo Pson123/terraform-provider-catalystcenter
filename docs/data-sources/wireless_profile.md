@@ -47,11 +47,12 @@ Read-Only:
 
 Read-Only:
 
-- `anchor_group_name` (String) Anchor Group Name. The anchor group must already exist before being referenced here.
+- `anchor_group_name` (String) Anchor Group Name.
 - `dot11be_profile_id` (String) 802.11be Profile Id. Applicable to IOS controllers with version 17.15 and higher. 802.11be Profiles if passed, should be same across all SSIDs in network profile being configured
 - `enable_fabric` (Boolean) True if fabric is enabled, else False. Flex and fabric cannot be enabled simultaneously and a profile can only contain either flex SSIDs or fabric SSIDs and not both at the same time
 - `enable_flex_connect` (Boolean) True if flex connect is enabled, else False. Flex and fabric cannot be enabled simultaneously and a profile can only contain either flex SSIDs or fabric SSIDs and not both at the same time
-- `interface_name` (String) Interface Name
+- `interface_name` (String) Interface Name. Mutually exclusive with vlan_group_name. Not applicable when fabric is enabled.
 - `local_to_vlan` (Number) Local To Vlan Id
 - `ssid_name` (String) SSID Name
+- `vlan_group_name` (String) VLAN Group Name. References a pre-configured VLAN Group on the WLC for client VLAN load-balancing. Mutually exclusive with interface_name. Not applicable when fabric is enabled.
 - `wlan_profile_name` (String) WLAN Profile Name
