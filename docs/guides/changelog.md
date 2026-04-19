@@ -7,7 +7,7 @@ description: |-
 
 # Changelog
 
-## 0.5.9 (unreleased)
+## 0.5.9
 
 - Add read cache to `catalystcenter_fabric_device` resource to improve performance with large state files
 - Add `catalystcenter_fabric_multicast_replication_mode` resource and data source to manage fabric multicast replication mode
