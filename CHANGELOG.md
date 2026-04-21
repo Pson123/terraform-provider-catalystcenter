@@ -1,6 +1,6 @@
-## 0.5.10 (unreleased)
+## 0.5.10
 
-- Fix resources that read state via a list-all endpoint to correctly handle out-of-band deletions by removing the resource from state when it is no longer found in Catalyst Center, allowing Terraform to recreate it on the next apply.
+- Fix resources that read state via a list-all endpoint to correctly handle out-of-band deletions by removing the resource from state when it is no longer found in Catalyst Center, allowing Terraform to recreate it on the next apply
 
 ## 0.5.9
 

@@ -16,6 +16,7 @@ All resources and data sources have been tested with the following releases.
 | --------------- | ------- |
 | Catalyst Center | 2.3.7.9 |
 | Catalyst Center | 2.3.7.10 |
+| Catalyst Center | 3.1.5 |
 
 ## Getting Started
 
