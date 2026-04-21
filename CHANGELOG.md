@@ -1,3 +1,7 @@
+## 0.5.10 (unreleased)
+
+- Fix resources that read state via a list-all endpoint to correctly handle out-of-band deletions by removing the resource from state when it is no longer found in Catalyst Center, allowing Terraform to recreate it on the next apply.
+
 ## 0.5.9
 
 - Add read cache to `catalystcenter_fabric_device` resource to improve performance with large state files
