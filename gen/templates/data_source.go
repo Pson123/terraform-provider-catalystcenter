@@ -261,6 +261,14 @@ func (d *{{camelCase .Name}}DataSource) Read(ctx context.Context, req datasource
 		res, err = d.client.Get(config.getFallbackPath() + params)
 	}
 	{{- end}}
+	{{- if .DsAllowNotFound}}
+	if err != nil && strings.Contains(err.Error(), "StatusCode 404") {
+		tflog.Debug(ctx, fmt.Sprintf("%s: Data source not found (404), returning empty attributes", config.Id.ValueString()))
+		diags = resp.State.Set(ctx, &config)
+		resp.Diagnostics.Append(diags...)
+		return
+	}
+	{{- end}}
 	if err != nil {
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Failed to retrieve object, got error: %s", err))
 		return

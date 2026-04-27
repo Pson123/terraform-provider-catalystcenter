@@ -97,6 +97,7 @@ type YamlConfig struct {
 	Name                        string                `yaml:"name"`
 	NoResource                  bool                  `yaml:"no_resource"`
 	NoDataSource                bool                  `yaml:"no_data_source"`
+	DsAllowNotFound             bool                  `yaml:"ds_allow_not_found"`
 	RestEndpoint                string                `yaml:"rest_endpoint"`
 	GetRestEndpoint             string                `yaml:"get_rest_endpoint"`
 	PutRestEndpoint             string                `yaml:"put_rest_endpoint"`

@@ -22,6 +22,7 @@ import (
 	"context"
 	"fmt"
 	"net/url"
+	"strings"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
@@ -190,6 +191,12 @@ func (d *DeviceDetailDataSource) Read(ctx context.Context, req datasource.ReadRe
 	params += "?searchBy=" + url.QueryEscape(config.Id.ValueString())
 	params += "&identifier=uuid"
 	res, err := d.client.Get(config.getPath() + params)
+	if err != nil && strings.Contains(err.Error(), "StatusCode 404") {
+		tflog.Debug(ctx, fmt.Sprintf("%s: Data source not found (404), returning empty attributes", config.Id.ValueString()))
+		diags = resp.State.Set(ctx, &config)
+		resp.Diagnostics.Append(diags...)
+		return
+	}
 	if err != nil {
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Failed to retrieve object, got error: %s", err))
 		return

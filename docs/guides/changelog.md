@@ -7,6 +7,10 @@ description: |-
 
 # Changelog
 
+## 0.5.11 (unreleased)
+
+- Fix `catalystcenter_device_detail` data source to return empty attributes on HTTP 404 instead of failing, preventing plan errors for recently onboarded devices where the device-detail API is temporarily unavailable
+
 ## 0.5.10
 
 - Fix resources that read state via a list-all endpoint to correctly handle out-of-band deletions by removing the resource from state when it is no longer found in Catalyst Center, allowing Terraform to recreate it on the next apply
