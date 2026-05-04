@@ -7,6 +7,10 @@ description: |-
 
 # Changelog
 
+## 0.5.11 (unreleased)
+
+- Add `catalystcenter_wireless_profile_policy_tag` resource and data source for managing Policy Tags associated with Wireless Profiles (controls which AP Zones are active at specific sites)
+
 ## 0.5.10
 
 - Fix resources that read state via a list-all endpoint to correctly handle out-of-band deletions by removing the resource from state when it is no longer found in Catalyst Center, allowing Terraform to recreate it on the next apply
