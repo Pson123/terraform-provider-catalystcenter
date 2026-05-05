@@ -1,7 +1,7 @@
 ---
 name: Device Replacement
+# manual updates to Read function in data source file
 rest_endpoint: /dna/intent/api/v1/device-replacement
-# no_data_source: true
 put_no_id: true
 put_delete: true
 delete_no_id: true
