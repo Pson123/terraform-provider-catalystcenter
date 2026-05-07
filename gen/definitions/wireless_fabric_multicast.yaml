@@ -1,0 +1,44 @@
+---
+name: Wireless Fabric Multicast
+rest_endpoint: /dna/intent/api/v1/sda/fabrics/%v/wirelessMulticast
+put_no_id: true
+get_no_id: true
+data_source_no_id: true
+import_no_id: true
+delete_no_id: true
+put_create: true
+put_delete: true
+delete_body: '{"multicastEnabled": false}'
+mutex: true
+doc_category: SDA
+test_tags: [SDA]
+res_description: 'This resource manages the Wireless Multicast setting for a fabric site in Cisco Catalyst Center. It enables or disables multicast traffic forwarding to wireless clients within the specified fabric site. The fabric site must have a Wireless Controller assigned (`WIRELESS_CONTROLLER_NODE` role) and at least one fabric-enabled SSID before this resource can be configured. For optimal performance, ensure wired multicast is also enabled (see `catalystcenter_fabric_multicast_replication_mode`).'
+attributes:
+  - model_name: fabricId
+    tf_name: fabric_id
+    type: String
+    id: true
+    reference: true
+    description: The unique identifier of the fabric site
+    example: 8e6f7b3a-2b0b-4a7d-8b1c-0d4b1cd5e1b1
+    test_value: catalystcenter_fabric_site.test.id
+  - model_name: multicastEnabled
+    tf_name: multicast_enabled
+    type: Bool
+    mandatory: true
+    response_data_path: response.multicastEnabled
+    description: Enable or disable wireless multicast for the fabric site
+    example: true
+test_prerequisites: |
+  data "catalystcenter_site" "test" {
+    name_hierarchy = "Global"
+  }
+  resource "catalystcenter_area" "test" {
+    name      = "Area1"
+    parent_id = data.catalystcenter_site.test.id
+  }
+  resource "catalystcenter_fabric_site" "test" {
+    site_id                     = catalystcenter_area.test.id
+    pub_sub_enabled             = false
+    authentication_profile_name = "No Authentication"
+  }
