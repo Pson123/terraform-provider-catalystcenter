@@ -1,3 +1,7 @@
+## 0.5.12 (unreleased)
+
+- Add `catalystcenter_wireless_fabric_multicast` resource and data source to enable or disable wireless multicast on a per-fabric-site basis
+
 ## 0.5.11
 
 - Add `catalystcenter_device_replacement` data source for querying device replacement status
