@@ -2,6 +2,7 @@
 
 - Fix `catalystcenter_provision_devices` resource to filter the `NCHS20405` ("already provisioned device") fallback during Update to only plan-managed devices. The site-scoped GET (`?siteId=`) returns every device provisioned at the site, including out-of-band ones
 - Fix `catalystcenter_fabric_port_assignments` resource to no longer fail with `Duplicate Set Element` when the `?networkDeviceId=` GET returns an empty or partially-populated `response` after out-of-band deletion. An empty `response` is now treated as resource-gone so Terraform reconciles it on the next apply
+- Fix `catalystcenter_fabric_port_assignments` resource to prune out-of-band-deleted port assignments from state on refresh
 
 ## 0.5.19
 
