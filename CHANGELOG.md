@@ -1,5 +1,7 @@
 ## 0.5.20 (unreleased)
 
+- Add `catalystcenter_wireless_cleanair_configuration` resource and data source to manage CleanAir feature templates
+- Add `feature_templates` attribute to the `catalystcenter_wireless_profile` resource to associate feature templates (such as CleanAir) with a wireless network profile
 - Add `catalystcenter_external_authentication` resource and data source to enable or disable external authentication for Catalyst Center user login
 - Add `catalystcenter_external_authentication_aaa_attribute` resource and data source to configure the custom AAA attribute used for external user role mapping
 - Fix `catalystcenter_provision_devices` resource to filter the `NCHS20405` ("already provisioned device") fallback during Update to only plan-managed devices. The site-scoped GET (`?siteId=`) returns every device provisioned at the site, including out-of-band ones
