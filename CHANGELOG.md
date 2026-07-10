@@ -1,4 +1,4 @@
-## 0.5.20 (unreleased)
+## 0.5.20
 
 - Add `catalystcenter_wireless_cleanair_configuration` resource and data source to manage CleanAir feature templates
 - Add `feature_templates` attribute to the `catalystcenter_wireless_profile` resource to associate feature templates (such as CleanAir) with a wireless network profile
