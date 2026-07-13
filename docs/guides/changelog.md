@@ -7,6 +7,10 @@ description: |-
 
 # Changelog
 
+## 0.5.21 (unreleased)
+
+- Fix perpetual `device_roles` diff on `catalystcenter_fabric_devices` when Catalyst Center adds `WIRELESS_CONTROLLER_NODE` after enabling Embedded Wireless Controller
+
 ## 0.5.20
 
 - Add `catalystcenter_wireless_cleanair_configuration` resource and data source to manage CleanAir feature templates
