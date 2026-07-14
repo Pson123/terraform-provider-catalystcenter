@@ -1,4 +1,4 @@
-## 0.5.21 (unreleased)
+## 0.5.21
 
 - Fix perpetual `device_roles` diff on `catalystcenter_fabric_devices` when Catalyst Center adds `WIRELESS_CONTROLLER_NODE` after enabling Embedded Wireless Controller
 
