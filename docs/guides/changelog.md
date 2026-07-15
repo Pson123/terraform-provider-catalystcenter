@@ -7,6 +7,10 @@ description: |-
 
 # Changelog
 
+## 0.5.22 (unreleased)
+
+- Add `catalystcenter_wireless_rrm_fra_configuration` resource and data source to manage RRM Flexible Radio Assignment (FRA) feature templates
+
 ## 0.5.21
 
 - Fix perpetual `device_roles` diff on `catalystcenter_fabric_devices` when Catalyst Center adds `WIRELESS_CONTROLLER_NODE` after enabling Embedded Wireless Controller
