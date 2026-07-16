@@ -1,4 +1,4 @@
-## 0.5.22 (unreleased)
+## 0.5.22
 
 - Add `catalystcenter_wireless_rrm_fra_configuration` resource and data source to manage RRM Flexible Radio Assignment (FRA) feature templates
 
