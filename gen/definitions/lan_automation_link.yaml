@@ -1,0 +1,63 @@
+---
+name: LAN Automation Link
+# manual changes in Create: append ?feature= query param (ADD_LINK/LINK_ADD mapping) and build
+# composite resource ID from action + endpoints. Generator id: true is not used here.
+rest_endpoint: /dna/intent/api/v1/lan-automation/updateDevice
+put_create: true
+no_read: true
+no_update: true
+no_delete: true
+no_import: true
+no_data_source: true
+skip_minimum_test: true
+no_wait: true
+doc_category: LAN Automation
+test_tags: [LANAUTO]
+res_description:
+  'This resource adds or deletes a Layer 3 link between two LAN-automated devices using the DAY-N updateDevice API.
+  Use action ADD_LINK to create a link or DELETE_LINK to remove one. When the resource is destroyed or refreshed,
+  no actions are performed on Catalyst Center.'
+attributes:
+  - model_name: action
+    type: String
+    mandatory: true
+    requires_replace: true
+    query_param_no_body: true
+    enum_values: [ADD_LINK, DELETE_LINK]
+    description: Link operation to perform. ADD_LINK creates a Layer 3 link; DELETE_LINK removes an existing link between the specified interfaces.
+    example: ADD_LINK
+  - model_name: sourceDeviceManagementIPAddress
+    data_path: linkUpdate
+    tf_name: primary_device_management_ip_address
+    type: String
+    mandatory: true
+    description: Primary (source) device management IP address.
+    example: 1.2.3.4
+  - model_name: sourceDeviceInterfaceName
+    data_path: linkUpdate
+    tf_name: primary_device_interface_name
+    type: String
+    mandatory: true
+    description: Primary (source) device interface name.
+    example: FortyGigabitEthernet1/0/1
+  - model_name: destinationDeviceManagementIPAddress
+    data_path: linkUpdate
+    tf_name: peer_device_management_ip_address
+    type: String
+    mandatory: true
+    description: Peer (destination) device management IP address.
+    example: 5.6.7.8
+  - model_name: destinationDeviceInterfaceName
+    data_path: linkUpdate
+    tf_name: peer_device_interface_name
+    type: String
+    mandatory: true
+    description: Peer (destination) device interface name.
+    example: TenGigabitEthernet1/0/5
+  - model_name: ipPoolName
+    data_path: linkUpdate
+    tf_name: ip_pool_name
+    type: String
+    description: Name of the IP pool used for link add. Required when action is ADD_LINK; omit for DELETE_LINK.
+    example: SDA_Overlapping_LAN_Auto
+    requires_replace: true

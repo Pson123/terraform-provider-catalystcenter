@@ -360,6 +360,7 @@ func (p *CcProvider) Resources(ctx context.Context) []func() resource.Resource {
 		NewIPPoolResource,
 		NewIPPoolReservationResource,
 		NewLANAutomationResource,
+		NewLANAutomationLinkResource,
 		NewNetworkProfileResource,
 		NewNetworkProfileForSitesAssignmentsResource,
 		NewNTPSettingsResource,
