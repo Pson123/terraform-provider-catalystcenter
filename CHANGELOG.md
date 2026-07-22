@@ -1,4 +1,4 @@
-## 0.5.23 (unreleased)
+## 0.5.23
 
 - Add `catalystcenter_lan_automation_link` resource to add or delete Layer 3 links between LAN-automated devices via the DAY-N `updateDevice` API (`ADD_LINK` / `DELETE_LINK`)
 
