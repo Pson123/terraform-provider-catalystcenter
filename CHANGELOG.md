@@ -1,4 +1,8 @@
 
+## 0.6.2 (unreleased)
+
+- Fix `catalystcenter_assign_credentials` resource to unassign credentials with a top-level `null` (the API's documented "inherit from the parent site" form) instead of `{"credentialsId": null}`, which Catalyst Center treats as "unset" so the credential became null/none on the site instead of inheriting from the level above. This corrects the change made in 0.6.0. Per the PUT `/dna/intent/api/v1/sites/{id}/deviceCredentials` schema (documented identically on 2.3.7.9-11, 3.1.5, 3.2.2 and 3.3.x), `null` inherits, `{}` unsets, and `{"credentialsId": "<id>"}` sets. The transient `NCND00010` ("Global Settings Save is in progress") error is still retried
+
 ## 0.6.1
 
 - Fix `radio_role_assignment` on the `catalystcenter_access_point_configuration` resource, which accepted only `auto`/`serving`/`monitor` while Catalyst Center accepts only `AUTO`/`SERVING`/`MONITOR`, making the attribute impossible to use. The published API schema lists the enum in lowercase but the service is case-sensitive and rejects it

@@ -56,20 +56,23 @@ func (data AssignCredentials) getPath() string {
 // in-place update that clears a single credential (set -> null) produces a PUT
 // body that omits that slot, so Catalyst Center leaves the existing assignment
 // untouched. The credential object can then not be deleted (NCIM01100 - still
-// associated with a site). To fix this, on update (put) we send
-// {"credentialsId": null} for any slot that was previously set and is now
-// removed. Per the API (PUT .../deviceCredentials), a null credentialsId makes
-// the slot inherit from the parent site: this unassigns the site-local
-// credential (so the underlying credential object can be deleted) while keeping
-// the site consistent with the credentials declared higher in the hierarchy -
-// which matches how the data model expresses "no override here, inherit from
-// the parent". The request schema types each slot as an object with
-// credentialsId; Catalyst Center 3.2.2 rejects a top-level null
-// ("cliCredentialsId": null) with NCND00010. Slots that were never set are
-// still omitted, so other inherited credentials (or credentials managed by
-// another assignment) are left untouched. (An empty object {}, by contrast,
-// marks the slot as "unset"/none instead of inheriting, so it is not used for
-// clearing here.)
+// associated with a site). To fix this, on update (put) we send a top-level
+// null for any slot that was previously set and is now removed. Per the API
+// (PUT .../deviceCredentials, documented identically on 2.3.7.9-11, 3.1.5,
+// 3.2.2 and 3.3.x): a null value makes the slot inherit from the parent site,
+// an empty object {} unsets it (no credential of that type is used), and
+// {"credentialsId": "<id>"} sets it. So a top-level null unassigns the
+// site-local credential (letting the underlying credential object be deleted)
+// while keeping the site consistent with the credentials declared higher in the
+// hierarchy - which matches how the data model expresses "no override here,
+// inherit from the parent". Slots that were never set are still omitted, so
+// other inherited credentials (or credentials managed by another assignment)
+// are left untouched.
+//
+// NOTE: an earlier attempt sent {"credentialsId": null} for the clear path. That
+// is NOT the documented inherit form and Catalyst Center treats it as "unset"
+// (the slot becomes null/none instead of inheriting from the parent), so it must
+// not be used here.
 func (data AssignCredentials) toBody(ctx context.Context, state AssignCredentials) string {
 	body := ""
 	put := state.Id.ValueString() != ""
@@ -78,12 +81,11 @@ func (data AssignCredentials) toBody(ctx context.Context, state AssignCredential
 		if !plan.IsNull() {
 			body, _ = sjson.Set(body, slot+".credentialsId", plan.ValueString())
 		} else if put && !prior.IsNull() {
-			// Slot was assigned and is now being cleared: send
-			// {"credentialsId": null} so the slot inherits from the parent
-			// site (matching the data model), rather than {} which would leave
-			// it unset/none. Other slots are omitted so unrelated inherited
-			// credentials stay intact.
-			body, _ = sjson.SetRaw(body, slot+".credentialsId", "null")
+			// Slot was assigned and is now being cleared: send a top-level null
+			// so the slot inherits from the parent site (matching the data
+			// model), rather than {} which would leave it unset/none. Other
+			// slots are omitted so unrelated inherited credentials stay intact.
+			body, _ = sjson.SetRaw(body, slot, "null")
 		}
 	}
 
